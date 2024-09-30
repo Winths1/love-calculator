@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="calculator">
+    <app-form
+      [placeholder1Input]="placeholder1"
+      [placeholder2Input]="placeholder2"
+      (submitFormOutput)="onSubmitFormOutput($event)"
+    />
+    <app-result [loveResultInput]="loveResult" />
+  </div>
+</ion-content>

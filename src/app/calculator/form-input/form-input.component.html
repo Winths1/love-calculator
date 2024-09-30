@@ -1,0 +1,9 @@
+<section class="input">
+  <ion-input [formControl]="formControlInput" fill="outline" [label]="labelInput" labelPlacement="floating" type="text" [placeholder]="placeholderInput" />
+  @if (
+    formControlInput.touched &&
+    formControlInput.hasError('required')
+  ){
+    <span>Champs obligatoire</span>
+  }
+</section>
