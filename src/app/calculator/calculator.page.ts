@@ -26,7 +26,6 @@ export class CalculatorPage implements OnChanges {
   ) { }
 
   ngOnChanges() {
-    console.log(this.id)
     if (!this.id) return;
 
     const result = this.service.get(this.id)

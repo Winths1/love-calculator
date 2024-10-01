@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -30,8 +30,9 @@ export class FormComponent  implements OnChanges {
   constructor() { }
 
   ngOnChanges() {
-    this.form.controls.name1.setValue(this.name1Input)
-    this.form.controls.name2.setValue(this.name2Input)
+    const { name1, name2 } = this.form.controls
+    name1.setValue(this.name1Input)
+    name2.setValue(this.name2Input)
   }
 
   onSubmitForm() {
