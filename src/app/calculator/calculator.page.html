@@ -16,6 +16,10 @@
       [placeholder2Input]="placeholder2"
       (submitFormOutput)="onSubmitFormOutput($event)"
     />
-    <app-result [loveResultInput]="loveResult" />
+    @if( loading ) {
+      <app-loader />
+    } @else if ( loveResult ) {
+      <app-result [loveResultInput]="loveResult" />
+    }
   </div>
 </ion-content>
