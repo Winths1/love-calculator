@@ -3,4 +3,9 @@
     <h4>{{ loveResultInput.fname }} x {{ loveResultInput.sname }}</h4>
     <p>{{ loveResultInput.percentage | percentage }}</p>
   </ion-label>
+  <ion-buttons slot="end">
+    <ion-button (click)="clickLine.emit(loveResultInput)">
+      <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-item>

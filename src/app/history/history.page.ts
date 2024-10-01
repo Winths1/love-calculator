@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LoveService } from '../love.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { LoveResult, LoveService } from '../love.service';
+import { ActionSheetController, AlertController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-history',
@@ -12,7 +13,9 @@ export class HistoryPage implements OnInit {
   constructor(
     private service: LoveService,
     private alertCtrl: AlertController,
-    private toasterCtrl: ToastController
+    private toasterCtrl: ToastController,
+    private actionSheetCtrl: ActionSheetController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -40,5 +43,29 @@ export class HistoryPage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+  async actionSheet(result: LoveResult) {
+    const actionSheet = await this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: `Reprendre`,
+          handler: () => this.router.navigate(['/calculator', result.id])
+        },
+        {
+          text: `Supprimer`,
+          handler: async () => {
+            this.service.remove(result)
+            const toaster = await this.toasterCtrl.create({
+              message: 'Résultat supprimé',
+              duration: 1500,
+              position: 'bottom',
+            })
+            toaster.present()
+          }
+        }
+      ]
+    })
+    await actionSheet.present()
   }
 }

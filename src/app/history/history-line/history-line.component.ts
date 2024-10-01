@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { LoveResult } from 'src/app/love.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { LoveResult } from 'src/app/love.service';
 export class HistoryLineComponent  implements OnInit {
 
   @Input({ required: true }) loveResultInput!: LoveResult;
+
+  @Output() clickLine = new EventEmitter<LoveResult>();
 
   constructor() { }
 

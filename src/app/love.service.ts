@@ -45,6 +45,11 @@ export class LoveService {
     return request;
   }
 
+  remove(result: LoveResult) {
+    const index = this.history.indexOf(result);
+    this.history.splice(index, 1);
+  }
+
 
   clear() {
     this.history = [];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { LoveResult, LoveService } from '../love.service';
 
 @Component({
@@ -6,7 +6,9 @@ import { LoveResult, LoveService } from '../love.service';
   templateUrl: './calculator.page.html',
   styleUrls: ['./calculator.page.scss'],
 })
-export class CalculatorPage implements OnInit {
+export class CalculatorPage implements OnChanges {
+
+  @Input() id!: string;
 
   title = 'Calculator';
 
@@ -20,7 +22,8 @@ export class CalculatorPage implements OnInit {
     private service: LoveService
   ) { }
 
-  ngOnInit() {
+  ngOnChanges() {
+    console.log(this.id)
   }
 
   onSubmitFormOutput([name1, name2]: [string, string]) {

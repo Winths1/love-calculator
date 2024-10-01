@@ -5,6 +5,10 @@ import { CalculatorPage } from './calculator.page';
 
 const routes: Routes = [
   {
+    path: ':id',
+    component: CalculatorPage
+  },
+  {
     path: '',
     component: CalculatorPage
   }
