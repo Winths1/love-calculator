@@ -19,4 +19,7 @@ export class HistoryPage implements OnInit {
     return this.service.history
   }
 
+  clearHistory() {
+    this.service.clear()
+  }
 }

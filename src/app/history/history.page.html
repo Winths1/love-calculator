@@ -1,6 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>History</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="clearHistory()">
+        <ion-icon icon="icon-only" name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -12,8 +17,7 @@
   </ion-header>
   <ion-list>
     @for (result of history; track result.id) {
-      <app-history-line />
-      <app-history-line />
+      <app-history-line [loveResultInput]="result" />
     }
   </ion-list>
 </ion-content>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { map, retry, tap, timeout } from 'rxjs';
 
 export interface LoveResult {
   id: string;
@@ -36,10 +36,17 @@ export class LoveService {
     ).pipe(
       // permet d'ajouter un id sur le résultat qui sera
       // nécessaire plus tard
+      timeout(1000),
+      retry(3),
       map(res => ({ ...res, id: Date.now().toString() })),
       tap(res => this.history.push(res))
     );
 
     return request;
+  }
+
+
+  clear() {
+    this.history = [];
   }
 }
