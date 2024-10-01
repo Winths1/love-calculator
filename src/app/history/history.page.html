@@ -16,8 +16,12 @@
     </ion-toolbar>
   </ion-header>
   <ion-list>
-    @for (result of history; track result.id) {
-      <app-history-line [loveResultInput]="result" />
+    @if (!history.length) {
+      <span class="empty">Historique vide</span>
+    } @else {
+      @for (result of history; track result.id) {
+        <app-history-line [loveResultInput]="result" />
+      }
     }
   </ion-list>
 </ion-content>
