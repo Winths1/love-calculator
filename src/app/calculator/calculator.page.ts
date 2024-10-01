@@ -15,6 +15,9 @@ export class CalculatorPage implements OnChanges {
   placeholder1  = 'Batman'
   placeholder2 = 'Superman'
 
+  name1!: string;
+  name2!: string;
+
   loveResult!: LoveResult
   loading = false
 
@@ -24,6 +27,13 @@ export class CalculatorPage implements OnChanges {
 
   ngOnChanges() {
     console.log(this.id)
+    if (!this.id) return;
+
+    const result = this.service.get(this.id)
+    if (!result) return;
+
+    this.name1 = result.fname
+    this.name2 = result.sname
   }
 
   onSubmitFormOutput([name1, name2]: [string, string]) {

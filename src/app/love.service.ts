@@ -17,7 +17,9 @@ export class LoveService {
 
   history: LoveResult[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   calculate(name1: string, name2: string) {
     const request = this.http.get<LoveResult>(
@@ -43,6 +45,10 @@ export class LoveService {
     );
 
     return request;
+  }
+
+  get(id: string) {
+    return this.history.find(result => result.id === id);
   }
 
   remove(result: LoveResult) {
