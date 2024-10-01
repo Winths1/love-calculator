@@ -11,7 +11,9 @@
     </ion-toolbar>
   </ion-header>
   <ion-list>
-    <app-history-line />
-    <app-history-line />
+    @for (result of history; track result.id) {
+      <app-history-line />
+      <app-history-line />
+    }
   </ion-list>
 </ion-content>

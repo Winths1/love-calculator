@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoveService } from '../love.service';
 
 @Component({
   selector: 'app-history',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: LoveService
+  ) { }
 
   ngOnInit() {
+  }
+
+  get history() {
+    return this.service.history
   }
 
 }
