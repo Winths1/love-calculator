@@ -1,0 +1,23 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="modalCtrl.dismiss()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-img src="assets/heart-with-arrow.svg" alt="heart" />
+    <div class="names">
+      <h1>{{ loveResultInput.fname }}</h1>
+      <h1>{{ loveResultInput.sname }}</h1>
+    </div>
+    <div class="result">
+      <h3>{{ loveResultInput.percentage | percentage }}</h3>
+      <h4>{{ loveResultInput.result }}</h4>
+    </div>
+  </div>
+</ion-content>

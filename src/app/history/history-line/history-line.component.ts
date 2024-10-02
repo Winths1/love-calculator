@@ -11,6 +11,7 @@ export class HistoryLineComponent  implements OnInit {
   @Input({ required: true }) loveResultInput!: LoveResult;
 
   @Output() clickLine = new EventEmitter<LoveResult>();
+  @Output() clickLabel = new EventEmitter<LoveResult>();
 
   constructor() { }
 

@@ -20,7 +20,7 @@
       <span class="empty">Historique vide</span>
     } @else {
       @for (result of history; track result.id) {
-        <app-history-line [loveResultInput]="result" (clickLine)="actionSheet($event)" />
+        <app-history-line [loveResultInput]="result" (clickLine)="actionSheet($event)" (clickLabel)="actionSheet($event)" />
       }
     }
   </ion-list>

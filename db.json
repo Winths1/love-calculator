@@ -1,0 +1,18 @@
+{
+  "results": [
+    {
+      "id": "1727862923823",
+      "fname": "Batman",
+      "sname": "Robin",
+      "percentage": "35",
+      "result": "Can choose someone better."
+    },
+    {
+      "id": "1727862936404",
+      "fname": "Jeremy",
+      "sname": "Theophile",
+      "percentage": "99",
+      "result": "Congratulations! Good choice"
+    }
+  ]
+}

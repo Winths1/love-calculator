@@ -28,11 +28,12 @@ export class CalculatorPage implements OnChanges {
   ngOnChanges() {
     if (!this.id) return;
 
-    const result = this.service.get(this.id)
-    if (!result) return;
-
-    this.name1 = result.fname
-    this.name2 = result.sname
+    this.service.get(this.id).subscribe({
+      next: result => {
+        this.name1 = result.fname
+        this.name2 = result.sname
+      },
+    })
   }
 
   onSubmitFormOutput([name1, name2]: [string, string]) {

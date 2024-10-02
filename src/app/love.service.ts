@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, retry, tap, timeout } from 'rxjs';
+import { forkJoin, map, mergeMap, retry, tap, timeout } from 'rxjs';
+import { ApiService } from './api.service';
 
 export interface LoveResult {
   id: string;
@@ -18,7 +19,8 @@ export class LoveService {
   history: LoveResult[] = [];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private api: ApiService
   ) { }
 
   calculate(name1: string, name2: string) {
@@ -41,23 +43,29 @@ export class LoveService {
       timeout(1000),
       retry(3),
       map(res => ({ ...res, id: Date.now().toString() })),
-      tap(res => this.history.push(res))
+      // tap(res => this.history.push(res))
+      mergeMap(res => this.api.addResult(res))
     );
 
     return request;
   }
 
   get(id: string) {
-    return this.history.find(result => result.id === id);
+    return this.api.getOne(id);
+  }
+
+  getAll() {
+    return this.api.getAllResults();
   }
 
   remove(result: LoveResult) {
-    const index = this.history.indexOf(result);
-    this.history.splice(index, 1);
+    return this.api.deleteResult(result);
   }
 
 
   clear() {
-    this.history = [];
+    return this.api.getAllResults().pipe(
+      mergeMap(res => forkJoin(res.map(r => this.api.deleteResult(r)))
+    ));
   }
 }

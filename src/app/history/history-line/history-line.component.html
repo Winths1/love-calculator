@@ -1,5 +1,5 @@
 <ion-item>
-  <ion-label>
+  <ion-label (click)="clickLabel.emit(loveResultInput)">
     <h4>{{ loveResultInput.fname }} x {{ loveResultInput.sname }}</h4>
     <p>{{ loveResultInput.percentage | percentage }}</p>
   </ion-label>
