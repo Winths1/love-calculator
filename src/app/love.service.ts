@@ -16,8 +16,6 @@ export interface LoveResult {
 })
 export class LoveService {
 
-  history: LoveResult[] = [];
-
   constructor(
     private http: HttpClient,
     private api: ApiService
