@@ -8,8 +8,8 @@ import { HistoryPageRoutingModule } from './history-routing.module';
 
 import { HistoryPage } from './history.page';
 import { HistoryLineComponent } from './history-line/history-line.component';
-import { PercentagePipe } from '../percentage.pipe';
 import { ResultModalComponent } from './result-modal/result-modal.component';
+import { ServicesModule } from '../services/services.module';
 
 @NgModule({
   imports: [
@@ -17,7 +17,7 @@ import { ResultModalComponent } from './result-modal/result-modal.component';
     FormsModule,
     IonicModule,
     HistoryPageRoutingModule,
-    PercentagePipe
+    ServicesModule
   ],
   declarations: [
     HistoryPage,

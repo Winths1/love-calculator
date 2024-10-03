@@ -11,9 +11,7 @@ export interface LoveResult {
   result: string;
 }
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LoveService {
 
   constructor(

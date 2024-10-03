@@ -1,0 +1,6 @@
+{
+  "title" : "Calculateur",
+  "actions" : {
+    "submit": "C'est parti"
+  }
+}

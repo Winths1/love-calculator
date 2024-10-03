@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoveResult } from './love.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ApiService {
+//   private readonly localApiAndroid = 'http://10.0.2.2:3000'
+//   private readonly localApiWeb = 'http://localhost:3000'
+//   private readonly localApiServeo = 'https://757e92fda46e5957037a38ddc942aa7d.serveo.net'
 
-  private readonly url = 'http://localhost:3000/results';
+  private readonly url = `https://757e92fda46e5957037a38ddc942aa7d.serveo.net/results`;
 
   constructor(
     private http: HttpClient,

@@ -1,16 +1,17 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { LoveResult, LoveService } from '../love.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-calculator',
   templateUrl: './calculator.page.html',
   styleUrls: ['./calculator.page.scss'],
 })
-export class CalculatorPage implements OnChanges {
+export class CalculatorPage implements OnChanges, OnInit {
 
   @Input() id!: string;
 
-  title = 'Calculator';
+  title! : string;
 
   placeholder1  = 'Batman'
   placeholder2 = 'Superman'
@@ -22,8 +23,15 @@ export class CalculatorPage implements OnChanges {
   loading = false
 
   constructor(
-    private service: LoveService
+    private service: LoveService,
+    private translate: TranslateService
   ) { }
+
+  ngOnInit(): void {
+    this.translate.get('title').subscribe({
+      next: value => this.title = value
+    })
+  }
 
   ngOnChanges() {
     if (!this.id) return;

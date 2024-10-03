@@ -10,8 +10,15 @@ import { CalculatorPage } from './calculator.page';
 import { FormComponent } from './form/form.component';
 import { ResultComponent } from './result/result.component';
 import { FormInputComponent } from './form-input/form-input.component';
-import { PercentagePipe } from '../percentage.pipe';
 import { LoaderComponent } from '../loader/loader.component';
+import { ServicesModule } from '../services/services.module';
+import { HttpClient } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+
+function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/calculator', '.json')
+}
 
 @NgModule({
   imports: [
@@ -19,7 +26,15 @@ import { LoaderComponent } from '../loader/loader.component';
     ReactiveFormsModule,
     IonicModule,
     CalculatorPageRoutingModule,
-    PercentagePipe
+    ServicesModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      },
+      isolate: true
+    })
   ],
   declarations: [
     CalculatorPage,
@@ -29,4 +44,10 @@ import { LoaderComponent } from '../loader/loader.component';
     LoaderComponent
   ]
 })
-export class CalculatorPageModule {}
+export class CalculatorPageModule {
+  constructor(
+    translateService: TranslateService
+  ) {
+    translateService.use(translateService.getBrowserLang() || translateService.getDefaultLang())
+  }
+}

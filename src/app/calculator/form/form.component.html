@@ -1,8 +1,8 @@
 <form [formGroup]="form" autocomplete="off" (ngSubmit)="onSubmitForm()">
-  <ion-img src="assets/generic-game-kbd.svg" alt="heart" />
+  <ion-img src="assets/heart-with-arrow.svg" alt="heart" />
   <app-form-input [formControlInput]="form.controls.name1" [placeholderInput]="placeholder1Input" labelInput="Nom 1" />
   <app-form-input [formControlInput]="form.controls.name2" [placeholderInput]="placeholder2Input" labelInput="Nom 2" />
 <section class="controls">
-    <ion-button type="submit" value="" >C'est parti !</ion-button>
+    <ion-button type="submit" value="" >{{ 'actions.submit' || translate }}</ion-button>
   </section>
 </form>

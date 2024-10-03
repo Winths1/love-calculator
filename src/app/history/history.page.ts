@@ -4,6 +4,7 @@ import { ActionSheetController, AlertController, ModalController, ToastControlle
 import { Router } from '@angular/router';
 import { ResultModalComponent } from './result-modal/result-modal.component';
 import { mergeMap } from 'rxjs';
+import { Share } from '@capacitor/share';
 
 @Component({
   selector: 'app-history',
@@ -68,6 +69,15 @@ export class HistoryPage implements ViewWillEnter {
         {
           text: `Reprendre`,
           handler: () => this.router.navigate(['/calculator', result.id])
+        },
+        {
+          text: 'Partager',
+          handler: () => {
+            Share.share({
+              title: 'A qui partager',
+              text: `${result.fname} x ${result.sname} = ${result.percentage}%`,
+            })
+          }
         },
         {
           text: `Supprimer`,
